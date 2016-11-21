@@ -1,29 +1,16 @@
 <h2>Answers</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Question</th>
-      <th>User</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= link_to 'Submit New Answer', new_answer_path %>
 
-  <tbody>
-    <% answers.each do |answer| %>
-      <tr>
-        <td><%= answer.question_id %></td>
-        <td><%= answer.user_id %></td>
-        <td><pre class="prettyprint"><%= answer.body %></pre></td>
-        <td><%= link_to 'Show', answer %></td>
-        <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
-        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% answers.each do |answer| %>
+  <div class="answer-block">
+    <p><pre class="prettyprint"><%= answer.body %></pre></p>
+    <h3> Submitted By: <%= answer.user.email %> </h3>
+    <p>
+      <%= link_to 'Show', answer %> | <%= link_to 'Edit', edit_answer_path(answer) %> | <%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  </div>
+<% end %>
 
 <br>
 
-<%= link_to 'New Answer', new_answer_path %>
