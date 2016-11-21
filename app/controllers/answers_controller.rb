@@ -1,5 +1,7 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :ensure_users_answer, except: [:show, :index]
 
   # GET /answers
   # GET /answers.json
@@ -70,5 +72,12 @@ class AnswersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
       params.require(:answer).permit(:question_id, :user_id, :body)
+    end
+    
+    def ensure_users_answer
+      set_answer
+      if @answer.user != current_user
+        redirect_to answer_url(@answer), notice: 'You can only edit your own materials.' 
+      end
     end
 end

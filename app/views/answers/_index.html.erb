@@ -1,16 +1,16 @@
 <h2>Answers</h2>
 
-<%= link_to 'Submit New Answer', new_answer_path %>
-
 <% answers.each do |answer| %>
   <div class="answer-block">
     <p><pre class="prettyprint"><%= answer.body %></pre></p>
-    <h3> Submitted By: <%= answer.user.email %> </h3>
+    <p> <strong>Submitted By:</strong> <%= answer.user.email %> </p>
     <p>
       <%= link_to 'Show', answer %> | <%= link_to 'Edit', edit_answer_path(answer) %> | <%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
   </div>
 <% end %>
+
+<%= link_to 'Submit New Answer', new_answer_path %>
 
 <br>
 
