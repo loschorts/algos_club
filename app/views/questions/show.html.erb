@@ -1,13 +1,6 @@
-<h1> <%= @question.title %> </h1> 
-<p>
-	<%= @question.body %>
-</p>
-
-<p>
-  <strong>Submitted By:</strong> <%= @question.user.email %>
-</p>
+<%= render partial: "questions/show", locals: {question: @question} %>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back to Questions Index', questions_path %>
 
-<%= render partial: "answers/index", locals: { answers: @question.answers } %>
+<%= render partial: "answers/index", locals: { answers: @question.answers, question: @question } %>

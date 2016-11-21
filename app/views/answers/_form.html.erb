@@ -1,4 +1,6 @@
-<%= form_for(answer) do |f| %>
+<%= render partial: "questions/show", locals: { question: question } %> 
+
+<%= form_for([question, answer]) do |f| %>
   <% if answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
@@ -10,16 +12,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :question_id %>
-    <%= f.number_field :question_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
 
   <div class="field">
     <%= f.label :body %>

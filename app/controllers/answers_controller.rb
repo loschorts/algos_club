@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :ensure_users_answer, except: [:show, :index]
+  before_action :ensure_users_answer, only: [:edit, :update]
 
   # GET /answers
   # GET /answers.json
@@ -17,6 +17,7 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new
+    @question = Question.find(params[:question_id])
   end
 
   # GET /answers/1/edit
@@ -30,7 +31,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+        format.html { redirect_to question_answer_path(@answer), notice: 'Answer was successfully created.' }
         format.json { render :show, status: :created, location: @answer }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to question_answer_path(@answer), notice: 'Answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @answer }
       else
         format.html { render :edit }
@@ -58,7 +59,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to answers_url, notice: 'Answer was successfully destroyed.' }
+      format.html { redirect_to question_path(@answer.question), notice: 'Answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -77,7 +78,7 @@ class AnswersController < ApplicationController
     def ensure_users_answer
       set_answer
       if @answer.user != current_user
-        redirect_to answer_url(@answer), notice: 'You can only edit your own materials.' 
+        redirect_to question_answer_path(@answer), notice: 'You can only edit your own materials.' 
       end
     end
 end
