@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :ensure_users_question, except: [:show, :index]
+  before_action :ensure_users_question, only: [:edit, :update]
 
   # GET /questions
   # GET /questions.json
@@ -27,6 +27,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    @question.user_id = current_user.id
 
     respond_to do |format|
       if @question.save

@@ -28,10 +28,13 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Answer.new(answer_params)
+    @answer.question_id = params[:question_id]
+    @question = Question.find(params[:question_id])
+    @answer.user_id = current_user.id
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to question_answer_path(@answer), notice: 'Answer was successfully created.' }
+        format.html { redirect_to question_path(@question), notice: 'Answer was successfully created.' }
         format.json { render :show, status: :created, location: @answer }
       else
         format.html { render :new }
@@ -78,7 +81,7 @@ class AnswersController < ApplicationController
     def ensure_users_answer
       set_answer
       if @answer.user != current_user
-        redirect_to question_answer_path(@answer), notice: 'You can only edit your own materials.' 
+        redirect_to question_path(@answer.question), notice: 'You can only edit your own materials.' 
       end
     end
 end
