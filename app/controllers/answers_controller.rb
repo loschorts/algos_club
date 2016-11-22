@@ -81,7 +81,7 @@ class AnswersController < ApplicationController
     def ensure_users_answer
       set_answer
       if @answer.user != current_user
-        redirect_to :back, notice: 'You can only edit your own materials.' 
+        redirect_to :back, notice: "You can only #{params[:action]} your own materials." 
       end
     end
 end
