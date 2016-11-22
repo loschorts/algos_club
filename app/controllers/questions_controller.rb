@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :ensure_users_question, only: [:edit, :update]
+  before_action :ensure_users_question, only: [:edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -78,7 +78,7 @@ class QuestionsController < ApplicationController
     def ensure_users_question
       set_question
       if @question.user != current_user
-        redirect_to question_url(@question), notice: 'You can only edit your own materials.' 
+        redirect_to :back, notice: 'You can only edit your own materials.' 
       end
     end
 end
