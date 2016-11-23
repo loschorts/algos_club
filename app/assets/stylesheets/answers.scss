@@ -2,13 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.answer-index-item {
-	display :flex;
+.row {
+	display: flex;
 	flex-direction: row;
-	justify-content: center;
-
 }
 
-.answer-index-item.vote-box {
+.answer-item .vote-box {
+	margin: 11px;
+	padding: 10px;
 	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.answer-item .snippet {
+	flex: 6;
 }

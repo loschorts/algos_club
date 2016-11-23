@@ -1,25 +1,23 @@
 <h2>Answers</h2>
 
 <% answers.each do |answer| %>
-  <div class="answer-index-item">
+  <div class="answer-item">
   	<div class="row"/>
 	  	<div class="vote-box">
-		  	<%= button_to "+1", answer_upvote_path(answer) %>
-		  	<p>Votes: <%= answer.score %> (+<%= answer.get_upvotes.count %> / -<%= answer.get_downvotes.count %>)</p>
-		  	<%= button_to "-1", answer_downvote_path(answer) %>
+			  <%= button_to "+1", answer_upvote_path(answer) %>
+		  	<p>Votes: <%= answer.score %> (+<%= answer.get_upvotes.count %> / -<%= answer.get_downvotes.count %>)
+		  	</p>
+			  <%= button_to "-1", answer_downvote_path(answer) %>
 	  	</div>
 	    <pre class="snippet prettyprint"><%= answer.body %></pre>
     </div>
     <div class="row">
 	    <p class="submitted-by"><strong>Submitted By:</strong> <%= answer.user.email %></p>
 	    <p class="link-box">
-	      <%= link_to 'Show', question_answer_path(answer) %> | <%= link_to 'Edit', edit_question_answer_path(question, answer) %> | <%= link_to 'Destroy', question_answer_path(question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
+	      <%= link_to 'View Comments', question_answer_path(answer) %> | <%= link_to 'Edit', edit_question_answer_path(question, answer) %> | <%= link_to 'Destroy', question_answer_path(question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
 	    </p>
     </div>
   </div>
 <% end %>
 
 <%= link_to 'Submit New Answer', new_question_answer_path(question) %>
-
-<br>
-

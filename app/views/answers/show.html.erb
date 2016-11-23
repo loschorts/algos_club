@@ -1,16 +1,16 @@
 <p>
   <strong>Question:</strong>
-  <%= @answer.question_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @answer.user_id %>
+  <%= @answer.question.body %>
 </p>
 
 <p>
   <strong>Body:</strong>
-  <%= @answer.body %>
+  <pre class="prettyprint"><%= @answer.body %></pre>
+</p>
+
+<p>
+  <strong>Submitter:</strong>
+  <%= @answer.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_question_answer_path(@answer) %> |
