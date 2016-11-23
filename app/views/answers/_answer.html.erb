@@ -11,7 +11,10 @@
   <div class="row">
     <p class="submitted-by"><strong>Submitted By:</strong> <%= answer.user.email %></p>
     <p class="link-box">
-      <%= link_to 'View Comments', question_answer_path(answer) %> | <%= link_to 'Edit', edit_question_answer_path(question, answer) %> | <%= link_to 'Destroy', question_answer_path(question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'View Comments', question_answer_path(answer) %> 
+      <% if current_user.owns?(answer) %>
+      | <%= link_to 'Edit', edit_question_answer_path(question, answer) %> | <%= link_to 'Destroy', question_answer_path(question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </p>
   </div>
 </div>
