@@ -14,6 +14,18 @@ class AnswersController < ApplicationController
   def show
   end
 
+  def upvote
+    set_answer
+    @answer.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    set_answer
+    @answer.downvote_by current_user
+    redirect_to :back
+  end
+
   # GET /answers/new
   def new
     @answer = Answer.new
@@ -22,6 +34,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/1/edit
   def edit
+    set_answer
   end
 
   # POST /answers
@@ -71,6 +84,7 @@ class AnswersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
       @answer = Answer.find(params[:id])
+      @question = @answer.question
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

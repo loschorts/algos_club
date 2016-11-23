@@ -1,6 +1,6 @@
 <h1>Editing Answer</h1>
 
-<%= render 'form', answer: @answer %>
+<%= render 'answers/form', locals: { answer: @answer, question: @question } %>
 
 <%= link_to 'Show', question_answer_path(@answer) %> |
 <%= link_to 'Back', question_path(@answer.question) %>

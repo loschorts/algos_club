@@ -2,7 +2,11 @@
 
 <% answers.each do |answer| %>
   <div class="answer-block">
-  	<p>Votes: <%= answer.get_upvotes.count - answer.get_downvotes.count %></p>
+  	<div class="vote-box">
+	  	<%= button_to "+1", answer_upvote_path(answer) %>
+	  	<p>Votes: <%= answer.score %> (+<%= answer.get_upvotes.count %> / -<%= answer.get_downvotes.count %>)</p>
+	  	<%= button_to "-1", answer_downvote_path(answer) %>
+  	</div>
     <p><pre class="prettyprint"><%= answer.body %></pre></p>
     <p><strong>Submitted By:</strong> <%= answer.user.email %></p>
     <p>
