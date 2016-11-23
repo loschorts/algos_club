@@ -2,8 +2,9 @@
 
 <% answers.each do |answer| %>
   <div class="answer-block">
+  	<p>Votes: <%= answer.get_upvotes.count - answer.get_downvotes.count %></p>
     <p><pre class="prettyprint"><%= answer.body %></pre></p>
-    <p> <strong>Submitted By:</strong> <%= answer.user.email %> </p>
+    <p><strong>Submitted By:</strong> <%= answer.user.email %></p>
     <p>
       <%= link_to 'Show', question_answer_path(answer) %> | <%= link_to 'Edit', edit_question_answer_path(question, answer) %> | <%= link_to 'Destroy', question_answer_path(question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
