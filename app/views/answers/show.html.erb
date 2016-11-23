@@ -1,17 +1,9 @@
-<p>
-  <strong>Question:</strong>
-  <%= @answer.question.body %>
-</p>
 
-<p>
-  <strong>Body:</strong>
-  <pre class="prettyprint"><%= @answer.body %></pre>
-</p>
+<%= render partial: "questions/question", locals: {question: @answer.question} %>
+<%= render partial: "answers/answer", locals: {answer: @answer, question: @answer.question} %>
 
-<p>
-  <strong>Submitter:</strong>
-  <%= @answer.user.email %>
-</p>
+<h2> Comments </h2>
+<p> Comments go here. </p>
 
 <%= link_to 'Edit', edit_question_answer_path(@answer) %> |
 <%= link_to 'Back', question_path(@answer.question_id) %>

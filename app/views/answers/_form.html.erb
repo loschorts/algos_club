@@ -1,4 +1,4 @@
-<%= render partial: "questions/show", locals: { question: @question } %> 
+<%= render partial: "questions/question", locals: { question: @question } %> 
 
 <%= form_for([question, answer]) do |f| %>
   <% if answer.errors.any? %>
