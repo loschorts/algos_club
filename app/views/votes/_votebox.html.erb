@@ -1,0 +1,6 @@
+<div class="vote-box">
+  <%= button_to "+1", answer_upvote_path(answer) %>
+	<p>Votes: <%= answer.score %> (+<%= answer.get_upvotes.count %> / -<%= answer.get_downvotes.count %>)
+	</p>
+  <%= button_to "-1", answer_downvote_path(answer) %>
+</div>

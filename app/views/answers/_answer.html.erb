@@ -1,11 +1,6 @@
 <div class="answer-item">
 	<div class="row"/>
-  	<div class="vote-box">
-		  <%= button_to "+1", answer_upvote_path(answer) %>
-	  	<p>Votes: <%= answer.score %> (+<%= answer.get_upvotes.count %> / -<%= answer.get_downvotes.count %>)
-	  	</p>
-		  <%= button_to "-1", answer_downvote_path(answer) %>
-  	</div>
+    <%= render partial: "votes/votebox", locals: {answer: answer} %>
     <pre class="snippet prettyprint"><%= answer.body %></pre>
   </div>
   <div class="row">
