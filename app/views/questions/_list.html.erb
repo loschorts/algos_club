@@ -15,7 +15,7 @@
         <td><%= question.body %></td>
         <td><%= question.user.email %></td>
         <td><%= link_to 'Show', question %></td>
-        <% if current_user.owns?(question) %>
+        <% if current_user && current_user.owns?(question) %>
           <td><%= link_to 'Edit', edit_question_path(question) %></td>
           <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
