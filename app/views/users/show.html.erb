@@ -2,13 +2,12 @@
 
 <h2> Stats </h2>
 
-	<span><strong>Questions Submitted</strong>: <%= @user.questions.count%></span>
-	<span><strong>Answers Elicited</strong>: <%= @user.questions.joins(:answers).select(:id).count %></span>
-
-	<span><strong>Answers Submitted</strong>: <%= @user.answers.count %></span>
-	<span><strong>Total Upvotes</strong>: <%= @user.answers.map(&:get_upvotes).map(&:count).reduce(:+) %></span>
-	<span><strong>Total Downvotes</strong>: <%= @user.answers.map(&:get_downvotes).map(&:count).reduce(:+) %></span></span>
-	<span><strong>Net Votes Score</strong>: <%= @user.answers.map(&:score).reduce(:+)%></span>
+	<div>Questions Submitted: <%= @user.questions.count%></div>
+	<div>Answers Elicited: <%= @user.questions.joins(:answers).select(:id).count %></div>
+	<div>Answers Submitted: <%= @user.answers.count %></div>
+	<div>Total Upvotes: <%= @user.answers.map(&:get_upvotes).map(&:count).reduce(:+) %></div>
+	<div>Total Downvotes: <%= @user.answers.map(&:get_downvotes).map(&:count).reduce(:+) %></div>
+	<div>Net Votes Score: <%= @user.answers.map(&:score).reduce(:+)%></div>
 
 <h2> Questions Submitted </h2>
 
