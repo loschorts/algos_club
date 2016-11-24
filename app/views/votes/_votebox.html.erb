@@ -1,6 +1,16 @@
 <div class="vote-box">
-  <%= button_to "+1", answer_upvote_path(answer) %>
-	<p>Votes: <%= answer.score %> (+<%= answer.get_upvotes.count %> / -<%= answer.get_downvotes.count %>)
+  <%= button_to "+1", {
+  	controller: "votes", 
+  	action: "upvote", 
+  	model: votable.class,
+  	id: votable.id }, 
+  	method: "post" %>
+	<p>Votes: <%= votable.score %> (+<%= votable.get_upvotes.count %> / -<%= votable.get_downvotes.count %>)
 	</p>
-  <%= button_to "-1", answer_downvote_path(answer) %>
+  <%= button_to "-1", {
+  	controller: "votes", 
+  	action: "downvote", 
+  	model: votable.class,
+  	id: votable.id }, 
+  	method: "post" %>
 </div>

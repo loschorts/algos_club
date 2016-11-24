@@ -1,6 +1,6 @@
 <div class="answer-item">
 	<div class="row"/>
-    <%= render partial: "votes/votebox", locals: {answer: answer} %>
+    <%= render partial: "votes/votebox", locals: {votable: answer} %>
     <pre class="snippet prettyprint"><%= answer.body %></pre>
   </div>
   <div class="row">

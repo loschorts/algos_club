@@ -1,4 +1,7 @@
 <div class="comment-item">
-	<p><%= comment.comment %></p>
+	<div class="row">
+		<%= render partial: "votes/votebox", locals: {votable: comment } %>
+		<p><%= comment.comment %></p>
+	</div>
 	<p><%= comment.user.email %> (<%=comment.created_at%>)</p>
 </div>
