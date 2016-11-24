@@ -1,6 +1,9 @@
 <%= render partial: "questions/question", locals: {question: @question} %>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
+<% if current_user.owns?(@question) %>
+	<%= link_to 'Edit', edit_question_path(@question) %> |
+<% end %>
+
 <%= link_to 'Back to Questions Index', questions_path %>
 
 <%= render partial: "answers/index", locals: { answers: @question.ranked_answers, question: @question } %>
