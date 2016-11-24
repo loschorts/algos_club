@@ -1,5 +1,6 @@
 
 <%= render partial: "questions/question", locals: {question: @answer.question} %>
+<h2> Answer </h2>
 <%= render partial: "answers/answer", locals: {answer: @answer, question: @answer.question} %>
 
 <h2> Comments </h2>
