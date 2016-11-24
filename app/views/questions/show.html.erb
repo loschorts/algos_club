@@ -6,4 +6,8 @@
 
 <%= link_to 'Back to Questions Index', questions_path %>
 
-<%= render partial: "answers/index", locals: { answers: @question.ranked_answers, question: @question } %>
+<h2> Answers </h2>
+
+<%= render partial: "answers/list", locals: { answers: @question.ranked_answers, question: @question } %>
+
+<%= link_to 'Submit New Answer', new_question_answer_path(@question) %>

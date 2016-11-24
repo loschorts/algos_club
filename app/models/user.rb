@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def owns?(item)
   	item.user == self
   end
+
+  def score
+  	@score ||= answers.map(&:score).reduce(:+) + questions.joins(:answers).select("answers.id").count
+  end
 end

@@ -1,0 +1,20 @@
+<h1><%= @user.email %></h1>
+
+<h2> Stats </h2>
+
+	<span><strong>Questions Submitted</strong>: <%= @user.questions.count%></span>
+	<span><strong>Answers Elicited</strong>: <%= @user.questions.joins(:answers).select(:id).count %></span>
+
+	<span><strong>Answers Submitted</strong>: <%= @user.answers.count %></span>
+	<span><strong>Total Upvotes</strong>: <%= @user.answers.map(&:get_upvotes).map(&:count).reduce(:+) %></span>
+	<span><strong>Total Downvotes</strong>: <%= @user.answers.map(&:get_downvotes).map(&:count).reduce(:+) %></span></span>
+	<span><strong>Net Votes Score</strong>: <%= @user.answers.map(&:score).reduce(:+)%></span>
+
+<h2> Questions Submitted </h2>
+
+<%= render partial: "questions/list", locals: {questions: @user.questions } %>
+
+<h2> Answers Submitted </h2>
+
+<%= render partial: "answers/list", locals: { answers: @user.answers } %>
+
