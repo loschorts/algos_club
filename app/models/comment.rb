@@ -2,6 +2,7 @@ class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
   include ExtraVotable
+  
   acts_as_commentable
   acts_as_votable
 
