@@ -1,0 +1,9 @@
+
+<form>
+  <select name="search_option">
+    <option value="title">Title</option>
+    <option value="body">Content</option>
+  </select>
+  <input type='text' name='search_value'/>
+  <%= button_to '🔍', questions_path, { method: :get } %>
+</form>

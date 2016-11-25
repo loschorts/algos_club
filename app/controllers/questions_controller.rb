@@ -6,7 +6,11 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    if params[:search_value]
+      @questions = Question.where("#{params[:search_option]} ILIKE ?", "%#{params[:search_value]}%")
+    else
+      @questions = Question.all
+    end
   end
 
   # GET /questions/1
@@ -79,7 +83,7 @@ class QuestionsController < ApplicationController
     def ensure_users_question
       set_question
       if @question.user != current_user
-        redirect_to :back, notice: 'You can only edit your own materials.' 
+        redirect_to :back, notice: 'You can only edit your own materials.'
       end
     end
 end
