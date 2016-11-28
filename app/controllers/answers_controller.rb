@@ -14,18 +14,6 @@ class AnswersController < ApplicationController
   def show
   end
 
-  def upvote
-    set_answer
-    @answer.upvote_by current_user
-    redirect_to :back
-  end
-
-  def downvote
-    set_answer
-    @answer.downvote_by current_user
-    redirect_to :back
-  end
-
   # GET /answers/new
   def new
     @answer = Answer.new
