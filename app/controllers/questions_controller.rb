@@ -74,6 +74,7 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
+      params[:question][:tag_list] = params[:question][:tag_list] || []
       params[:question][:tag_list] += params[:new_tag_list].split(',')
       params[:question][:tag_list] = params[:question][:tag_list].map { |tag| tag.downcase }
       params.require(:question).permit(:user_id, :body, :title, :tag_list => [])
