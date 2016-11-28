@@ -1,9 +1,11 @@
-<h1> <%= question.title %> </h1> 
+<div class='question'>
+	<h1> <%= question.title %> </h1>
 
-<p>
-	<%= question.body %>
-</p>
+	<p class='body'>
+		<%= question.body %>
+	</p>
 
-<p>
-  <strong>Submitted By:</strong> <%= question.user.email %>
-</p>
+	<p>
+	  <strong>Submitted By:</strong> <%= question.user.email %>
+	</p>
+</div>
