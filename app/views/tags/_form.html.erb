@@ -1,0 +1,6 @@
+<label for="question_tag_list">Tags
+  <% tags.each do |tag| %>
+   <%= check_box_tag 'question[tag_list][]', tag.name %>
+   <%= tag.name %>
+  <% end %>
+</label>

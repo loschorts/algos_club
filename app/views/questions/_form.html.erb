@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :tag_list %>
-    <%= f.text_field :tag_list %>
+    <%= render partial: "tags/form", locals: { tags: @tags } %>
+  
   </div>
 
   <div class="actions">
