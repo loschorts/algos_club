@@ -5,6 +5,10 @@
 		<%= question.body %>
 	</p>
 
+	<p class='tag-list'>
+		<%= render partial: "tags/list", locals: { tags: question.tags } %>
+	</p>
+
 	<p>
 	  <strong>Submitted By:</strong> <%= question.user.email %>
 	</p>

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :questions
-  resources :questions do 
+  resources :questions do
   	resources :answers, except: [:index]
   end
+
+  resources :tags, only: [:index, :show]
   devise_for :users
 
   resources :users, only: [:show]
