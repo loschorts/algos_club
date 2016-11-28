@@ -22,13 +22,13 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @tags = ActsAsTaggableOn::Tag.all
   end
 
   # POST /questions
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    debugger
     @question.user_id = current_user.id
 
     respond_to do |format|
@@ -45,7 +45,6 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    @tags = Tag.all
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -75,7 +74,9 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:user_id, :body, :title, tag_list: [])
+      params[:question][:tag_list] += params[:new_tag_list].split(',')
+      params[:question][:tag_list] = params[:question][:tag_list].map { |tag| tag.downcase }
+      params.require(:question).permit(:user_id, :body, :title, :tag_list => [])
     end
 
     def ensure_users_question
