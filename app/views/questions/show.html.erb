@@ -1,10 +1,13 @@
 <%= render partial: "questions/question", locals: {question: @question} %>
 
-<% if current_user && current_user.owns?(@question) %>
-	<%= link_to 'Edit', edit_question_path(@question) %> |
-<% end %>
-
-<%= link_to 'Back to Questions Index', questions_path %>
+<div class='row'>
+	<p class='link-box'>
+		<% if current_user && current_user.owns?(@question) %>
+			<%= link_to 'Edit', edit_question_path(@question) %> |
+		<% end %>
+		<%= link_to 'Back to Questions Index', questions_path %>
+	</p>
+</div>
 
 <h2> Answers </h2>
 

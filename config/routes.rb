@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  
-  resources :questions do 
-    resources :answers, except: [:index]
+  resources :questions
+  resources :questions do
+  	resources :answers, except: [:index]
     resources :comments, except: [:show, :index]
   end
+
+  resources :tags, only: [:index, :show]
   
   devise_for :users
 
