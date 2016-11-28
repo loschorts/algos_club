@@ -5,13 +5,13 @@ class VotesController < ApplicationController
 	def upvote
     set_votable
     @votable.upvote_by current_user
-    redirect_to :back, { notice: "Upvoted #{@votable.class}" }
+    redirect_to :back, { notice: "Upvoted #{params[:model]}" }
   end
 
   def downvote
     set_votable
     @votable.downvote_by current_user
-    redirect_to :back, { notice: "Downvoted #{@votable.class}" }
+    redirect_to :back, { notice: "Downvoted #{params[:model]}" }
   end
 
   private

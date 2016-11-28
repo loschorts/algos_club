@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :questions
+  
   resources :questions do 
-  	resources :answers, except: [:index]
+    resources :answers, except: [:index]
     resources :comments, except: [:show, :index]
   end
+  
   devise_for :users
 
   resources :users, only: [:show]
