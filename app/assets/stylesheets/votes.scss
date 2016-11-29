@@ -1,0 +1,13 @@
+// Place all the styles related to the votes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.vote-box {
+	margin: 11px;
+	padding: 10px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}

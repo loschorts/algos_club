@@ -1,0 +1,11 @@
+<div class="comment-item">
+	<div class="row">
+		<%= render partial: "votes/votebox", locals: {votable: comment } %>
+		<p><%= comment.comment %></p>
+	</div>
+	<p><%= comment.user.email %> (<%=comment.created_at%>)</p>
+	<% if current_user && current_user.owns?(comment) %> 
+    <%= link_to 'Edit', edit_question_comment_path(params[:question_id], comment) %> | 
+    <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+</div>

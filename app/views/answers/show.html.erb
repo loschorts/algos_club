@@ -4,6 +4,6 @@
 <%= render partial: "answers/answer", locals: {answer: @answer, question: @answer.question} %>
 
 <h2> Comments </h2>
-<p> Comments go here. </p>
+<%= render partial: "comments/list", locals: {comments: @answer.comments} %>
 
 <%= link_to 'Back to Question', question_path(@answer.question_id) %>
