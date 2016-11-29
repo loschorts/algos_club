@@ -16,16 +16,17 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    set_question
   end
 
   # GET /questions/new
   def new
     @question = Question.new
+    @tags = ActsAsTaggableOn::Tag.all
   end
 
   # GET /questions/1/edit
   def edit
+    @tags = ActsAsTaggableOn::Tag.all
   end
 
   # POST /questions
@@ -77,7 +78,10 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:user_id, :body, :title)
+      params[:question][:tag_list] = params[:question][:tag_list] || []
+      params[:question][:tag_list] += params[:new_tag_list].split(',')
+      params[:question][:tag_list] = params[:question][:tag_list].map { |tag| tag.downcase }
+      params.require(:question).permit(:user_id, :body, :title, :tag_list => [])
     end
 
     def ensure_users_question
