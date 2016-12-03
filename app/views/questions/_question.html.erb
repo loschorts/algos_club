@@ -12,5 +12,8 @@
 
 	<p>
 	  <strong>Submitted By:</strong> <%= question.user.email %>
+		<% if current_user && current_user.owns?(@question) %>
+			<%= link_to 'Edit', edit_question_path(@question) %>
+		<% end %>
 	</p>
 </div>

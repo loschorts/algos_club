@@ -1,16 +1,10 @@
 <%= render partial: "questions/question", locals: {question: @question} %>
 
-<div class='row'>
-	<p class='link-box'>
-		<% if current_user && current_user.owns?(@question) %>
-			<%= link_to 'Edit', edit_question_path(@question) %> |
-		<% end %>
-		<%= link_to 'Back to Questions Index', questions_path %>
-	</p>
+<h2> Answers <a href="" onclick="toggleAnswer(event)" class="answer-link">Show Answers</a></h2>
+
+
+<div class='answers hide'>
+	<%= render partial: "answers/list", locals: { answers: @question.ranked_answers, question: @question } %>
 </div>
 
-<h2> Answers </h2>
-
-<%= render partial: "answers/list", locals: { answers: @question.ranked_answers, question: @question } %>
-
-<%= link_to 'Submit New Answer', new_question_answer_path(@question) %>
+<%= link_to 'New Answer', new_question_answer_path(@question) %>
