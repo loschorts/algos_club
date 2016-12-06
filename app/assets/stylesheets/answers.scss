@@ -10,3 +10,18 @@
 .answer-item .snippet {
 	flex: 6;
 }
+
+.hide {
+	display: none;
+}
+
+.answer-item:first-child {
+	border: 5px double black;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+.answer-link {
+	font-size: 13px;
+	font-weight: normal;
+}

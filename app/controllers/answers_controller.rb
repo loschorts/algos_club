@@ -79,11 +79,11 @@ class AnswersController < ApplicationController
     def answer_params
       params.require(:answer).permit(:question_id, :user_id, :body)
     end
-    
+
     def ensure_users_answer
       set_answer
       if @answer.user != current_user
-        redirect_to :back, notice: "You can only #{params[:action]} your own materials." 
+        redirect_to :back, notice: "You can only #{params[:action]} your own materials."
       end
     end
 end

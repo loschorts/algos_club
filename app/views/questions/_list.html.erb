@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Body</th>
       <th>Submitter</th>
       <th colspan="3"></th>
     </tr>
@@ -11,13 +10,11 @@
   <tbody>
     <% questions.each do |question| %>
       <tr>
-        <td><strong><%= question.title %><strong></td>
-        <td><%= question.body %></td>
+        <td><strong><%= link_to question.title, question %></strong></td>
         <td><%= question.user.email %></td>
-        <td><%= link_to 'Show', question %></td>
         <% if current_user && current_user.owns?(question) %>
           <td><%= link_to 'Edit', edit_question_path(question) %></td>
-          <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
