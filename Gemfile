@@ -52,3 +52,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '4.2.0'
 gem 'pry-rails', '0.3.4'
 gem 'acts_as_commentable', '4.0.2'
+
+gem 'figaro', '1.1.1'
